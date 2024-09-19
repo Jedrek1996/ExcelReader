@@ -1,18 +1,20 @@
+//Env file config ✨
+import * as dotenv from "dotenv";
+dotenv.config();
+
+//Express ✨
 import express from "express";
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-app.listen(port, () => {
-  return console.log(`Express is listening at http://localhost:${port}`);
-});
-
-  // "scripts": {
-  //   "start": "node dist/server.js",
-  //   "dev": "nodemon --exec ts-node server/server.ts", 
-  //   "build": "tsc",
-  //   "test": "echo \"Error: no test specified\" && exit 1"
-  // },
+//mongodb connection ✨
+import mongoose from "mongoose";
+try {
+  mongoose.connect(process.env.MONGO_URL as string);
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+} catch (error) {
+  console.log(error);
+  process.exit(1);
+}
