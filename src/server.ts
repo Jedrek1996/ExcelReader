@@ -23,12 +23,6 @@ try {
   process.exit(1);
 }
 
-//Morgan Logging✨
-import morgan from "morgan";
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
-
 //Routes ✨
 import excelRoute from "./routes/excelRoute";
 app.use("/api", excelRoute);
