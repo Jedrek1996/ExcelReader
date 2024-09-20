@@ -20,7 +20,7 @@ const FileUploader = ({ file, setFile, handleUpload }: FileUploaderProps) => {
         toast.error("Invalid file type. Only CSV file format is accepted.");
         return;
       }
-      toast.success("Your file has been added!");
+      toast.success("File added! Click Upload CSV to proceed!");
       setFile(selectedFile);
     }
   };
@@ -35,7 +35,7 @@ const FileUploader = ({ file, setFile, handleUpload }: FileUploaderProps) => {
       />
       <label
         htmlFor="file-upload"
-        className="p-2 bg-blue-500 text-white rounded cursor-pointer hover:bg-blue-700 transition"
+        className="p-2 bg-indigo-500 text-white rounded cursor-pointer hover:bg-indigo-700 transition"
       >
         Choose File
       </label>

@@ -5,6 +5,7 @@ import Pagination from "./Pagination";
 import Searchbar from "./Searchbar";
 import DataTable from "./Datatable";
 import ResultsFilter from "./ResultsFilter";
+import Header from "./misc/Header";
 
 function Home() {
   const [file, setFile] = useState<File | null>(null);
@@ -14,26 +15,6 @@ function Home() {
   const [totalPages, setTotalPages] = useState(0);
   const [isFileUploaded, setIsFileUploaded] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
-
-  // useEffect(() => {
-  //   const checkConnection = async () => {
-  //     try {
-  //       const response = await fetch("/api/test-connection");
-
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         toast.success(data.message);
-  //       } else {
-  //         toast.error("Connection test failed.");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error checking connection:", error);
-  //       toast.error("Connection test failed.");
-  //     }
-  //   };
-
-  //   checkConnection();
-  // }, []);
 
   const handleUpload = async () => {
     if (!file) {
@@ -83,8 +64,9 @@ function Home() {
   const displayedData = parsedData.slice(startIndex, endIndex);
 
   return (
-    <div className="bg-gray-700 text-white min-h-screen flex flex-col p-4">
-      <div className="flex flex-col justify-center text-center p-4 border border-gray-600 rounded-lg bg-gray-800">
+    <div className="bg-indigo-500 text-white min-h-screen flex flex-col p-4">
+      <Header />
+      <div className="flex flex-col justify-center text-center w-4/12 mx-auto mt-4 p-4 border border-white rounded-lg bg-gray-800">
         <FileUploader
           file={file}
           setFile={setFile}
@@ -116,8 +98,8 @@ function Home() {
               <DataTable data={displayedData} />
             </div>
           ) : (
-            <div className="w-full flex justify-center">
-              <p className="text-center text-gray-400 mt-24">
+            <div className="w-full flex justify-center text-xl">
+              <p className="text-center text-gray-200 mt-48">
                 {searchPerformed
                   ? "No search results found."
                   : "No data available. Please upload a CSV file."}
@@ -125,8 +107,8 @@ function Home() {
             </div>
           )
         ) : (
-          <div className="w-full flex justify-center">
-            <p className="text-center text-gray-400 mt-24">
+          <div className="w-full flex justify-center text-xl">
+            <p className="text-center text-gray-200 mt-48">
               Please upload a CSV file.
             </p>
           </div>

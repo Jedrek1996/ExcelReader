@@ -27,17 +27,17 @@ const Searchbar = ({ setParsedData, setSearchPerformed }: SearchbarProps) => {
   };
 
   return (
-    <div className="mt-4">
+    <div className="mt-6">
       <input
         type="text"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Search data"
-        className="p-2 mb-4 text-black rounded-sm"
+        className="p-2 text-black rounded-sm focus:outline-none focus:ring-1 focus:ring-green-300"
       />
       <button
         onClick={handleSearch}
-        className="p-2 bg-blue-500 hover:bg-blue-700 rounded mb-4"
+        className="p-2 bg-indigo-500 hover:bg-indigo-700 rounded mb-2"
       >
         Search
       </button>
