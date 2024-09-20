@@ -25,9 +25,9 @@ app.use(cors());
 
 //Mongodb connection ✨
 const port = process.env.PORT || 5100;
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 try {
-  mongoose.connect(process.env.MONGO_URL as string);
+  // mongoose.connect(process.env.MONGO_URL as string);
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
