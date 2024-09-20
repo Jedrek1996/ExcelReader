@@ -6,6 +6,19 @@ dotenv.config();
 import express from "express";
 const app = express();
 
+//Routes ✨
+import excelRoute from "./routes/excelRoute";
+app.use("/api", excelRoute);
+
+// Serve static files from React build ✨
+import path from "path";
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+// Handle routes by sending to build index ✨
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+});
+
 //CORS Policy ✨
 import cors from "cors";
 app.use(cors());
@@ -22,7 +35,3 @@ try {
   console.log(error);
   process.exit(1);
 }
-
-//Routes ✨
-import excelRoute from "./routes/excelRoute";
-app.use("/api", excelRoute);
