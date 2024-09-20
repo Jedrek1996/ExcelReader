@@ -33,7 +33,7 @@ const Searchbar = ({ setParsedData, setSearchPerformed }: SearchbarProps) => {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Search data"
-        className="p-2 text-black rounded-sm focus:outline-none focus:ring-1 focus:ring-green-300"
+        className="p-2 border text-gray-400 rounded-sm focus:outline-none focus:ring-1 focus:ring-green-300"
       />
       <button
         onClick={handleSearch}

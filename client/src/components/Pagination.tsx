@@ -12,28 +12,30 @@ const Pagination: React.FC<PaginationProps> = ({
   hasData,
 }) => {
   return (
-    <div className="mt-4">
+    <div className="mt-4 flex items-center justify-center space-x-4">
       {hasData && (
         <>
-          {page > 1 && (
-            <button
-              onClick={() => onPageChange(page - 1)}
-              className="p-2 text-indigo-500 bg-white hover:bg-gray-300 rounded-2xl mr-4"
-            >
-              &lt; Previous
-            </button>
-          )}
-          <span>
+          <button
+            onClick={() => onPageChange(page - 1)}
+            className={`p-2 text-indigo-500 bg-white hover:bg-gray-300 rounded-2xl ${
+              page <= 1 ? "invisible" : ""
+            }`}
+          >
+            &lt; Previous
+          </button>
+
+          <span className="w-28 text-center">
             Page {page} of {totalPages}
           </span>
-          {page < totalPages && (
-            <button
-              onClick={() => onPageChange(page + 1)}
-              className="p-2 text-indigo-500 bg-white hover:bg-gray-300 rounded-2xl ml-4"
-            >
-              Next &gt;
-            </button>
-          )}
+
+          <button
+            onClick={() => onPageChange(page + 1)}
+            className={`p-2 text-indigo-500 bg-white hover:bg-gray-300 rounded-2xl ${
+              page >= totalPages ? "invisible" : ""
+            }`}
+          >
+            Next &gt;
+          </button>
         </>
       )}
     </div>

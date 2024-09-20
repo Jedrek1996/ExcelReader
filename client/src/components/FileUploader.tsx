@@ -39,7 +39,7 @@ const FileUploader = ({ file, setFile, handleUpload }: FileUploaderProps) => {
       >
         Choose File
       </label>
-      <span className="ml-2 text-gray-400">
+      <span className="ml-2  text-lg text-gray-400">
         {file ? file.name : "No file chosen"}
       </span>
 
