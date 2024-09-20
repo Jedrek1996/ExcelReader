@@ -20,7 +20,7 @@ const Searchbar = ({ setParsedData, setSearchPerformed }: SearchbarProps) => {
       const results = await response.json();
 
       setParsedData(results);
-      setSearchPerformed(true); // Set searchPerformed to true when a search is executed
+      setSearchPerformed(true);
     } catch (error) {
       console.error("Error fetching search results:", error);
     }

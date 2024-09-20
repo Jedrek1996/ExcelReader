@@ -15,6 +15,26 @@ function Home() {
   const [isFileUploaded, setIsFileUploaded] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
 
+  // useEffect(() => {
+  //   const checkConnection = async () => {
+  //     try {
+  //       const response = await fetch("/api/test-connection");
+
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         toast.success(data.message);
+  //       } else {
+  //         toast.error("Connection test failed.");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error checking connection:", error);
+  //       toast.error("Connection test failed.");
+  //     }
+  //   };
+
+  //   checkConnection();
+  // }, []);
+
   const handleUpload = async () => {
     if (!file) {
       toast.error("Please select a CSV file before uploading.");
@@ -36,7 +56,7 @@ function Home() {
         setTotalPages(Math.ceil(data.length / limit));
         setPage(1);
         setIsFileUploaded(true);
-        setSearchPerformed(false); 
+        setSearchPerformed(false);
         toast.success("File uploaded successfully!");
       } else {
         const errorData = await response.json();
