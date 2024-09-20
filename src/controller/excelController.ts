@@ -41,3 +41,7 @@ export const searchInData = (req: Request, res: Response) => {
   const results = searchData(query);
   return res.status(200).json(results);
 };
+
+export const testConnection = (req: Request, res: Response) => {
+  res.status(200).json({ message: "Connection successful!" });
+};

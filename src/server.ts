@@ -5,13 +5,13 @@ dotenv.config();
 //Express ✨
 import express from "express";
 const app = express();
-const port = 3000;
 
 //CORS Policy ✨
 import cors from "cors";
 app.use(cors());
 
 //Mongodb connection ✨
+const port = process.env.PORT || 5100;
 import mongoose from "mongoose";
 try {
   mongoose.connect(process.env.MONGO_URL as string);
@@ -21,6 +21,12 @@ try {
 } catch (error) {
   console.log(error);
   process.exit(1);
+}
+
+//Morgan Logging✨
+import morgan from "morgan";
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
 }
 
 //Routes ✨
