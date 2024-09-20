@@ -7,7 +7,11 @@ import express from "express";
 const app = express();
 const port = 3000;
 
-//mongodb connection ✨
+//CORS Policy ✨
+import cors from "cors";
+app.use(cors());
+
+//Mongodb connection ✨
 import mongoose from "mongoose";
 try {
   mongoose.connect(process.env.MONGO_URL as string);
@@ -18,3 +22,7 @@ try {
   console.log(error);
   process.exit(1);
 }
+
+//Routes ✨
+import excelRoute from "./routes/excelRoute";
+app.use("/api", excelRoute);
