@@ -1,4 +1,4 @@
-# CSV File Uploader and Viewer
+# CSV File Uploader and Viewer 📄
 
 Live demo of the application [here](https://excel-reader-wqmc.onrender.com/).
 
@@ -18,11 +18,11 @@ This mini project is a web application that allows users to upload CSV files, vi
   - Nodemon for active updates on the backend.
 
 - **Testing Framework:** 
-  - Jest for unit testing for both endss.
+  - Jest for unit testing for both ends.
 
 - **Configs:** 
-- Concurrently to run both ends in development.
-- Proxy in vite config to ensure both ends are connected.
+  - Concurrently to run both ends in development as well as test files.
+  - Proxy in vite config to ensure both ends are connected.
 
 ## Features 🔎
 
@@ -36,14 +36,16 @@ This mini project is a web application that allows users to upload CSV files, vi
 - Node.js (version 14 or later) Recommend to use the latest version of node.
 - npm (Node package manager)
 
-### Steps to Run the Project Locally.
-1. Run this command npm run setup-project in the root directory.
-2. Run npm run dev to start the project.
+### Steps to Run the Project Locally 🖥️
 
+1. Run this command: **`npm run setup-project`** in the root directory.
+2. Run **`npm run dev`** to start the project.
+3. Run **`npm run test`** in the root directory to execute test files.
 
-## Steps for deployment.
-1. From the root directory, cd to the client.
-2. Run npm run build to compile the tsc code for PRD.
-3. Once the dist folder is created rename it to build.
-4. Update github repo.
-5. Render will automatically pick up and redeploy.
+### Steps for deployment 👨🏻‍💻
+
+1. From the root directory, **cd** to the **client** directory.
+2. Run **`npm run build`** to compile the TypeScript code for production.
+3. Once the **`dist`** folder is created, rename it to **`build`**.
+4. Update the GitHub repository.
+5. Render will automatically pick up the changes and redeploy.
