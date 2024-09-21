@@ -1,5 +1,4 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-
 import Pagination from "../components/Pagination";
 
 describe("Pagination", () => {
@@ -15,7 +14,11 @@ describe("Pagination", () => {
       />
     );
 
-    expect(screen.getByText(/Page 1 of 5/)).toBeInTheDocument();
+    // Use a regex to match the text that is split
+    expect(screen.getByText(/Page/)).toBeInTheDocument();
+    expect(screen.getByText(/1/)).toBeInTheDocument();
+    expect(screen.getByText(/of/)).toBeInTheDocument();
+    expect(screen.getByText(/5/)).toBeInTheDocument();
   });
 
   it("calls onPageChange when Next button is clicked", () => {

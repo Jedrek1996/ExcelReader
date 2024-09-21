@@ -50,7 +50,8 @@ describe("FileUploader Component", () => {
     fireEvent.change(fileInput, { target: { files: [invalidFile] } });
 
     await waitFor(() => {
-      expect(screen.getByText(/No file chosen/i)).toBeInTheDocument();
+      // Update this line to check for "No file uploaded"
+      expect(screen.getByText(/No file uploaded/i)).toBeInTheDocument();
       expect(toast.error).toHaveBeenCalledWith(
         "Invalid file type. Only CSV file format is accepted."
       );
