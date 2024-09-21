@@ -5,7 +5,7 @@ const Header = () => {
         CSV Reader
       </h1>
 
-      <div className="flex flex-col items-center justify-evenly text-center text-sm mt-4 italic font-semibold">
+      <div className="flex flex-col items-center justify-evenly text-center text-[10px] mt-1 italic font-semibold">
         <a
           href="https://github.com/Jedrek1996/ExcelReader"
           target="_blank"

@@ -66,7 +66,7 @@ function Home() {
   return (
     <div className="bg-indigo-500 text-white min-h-screen flex flex-col p-4">
       <Header />
-      <div className="flex flex-col justify-center text-center w-4/12 mx-auto mt-4 p-4 border border-white rounded-xl bg-white">
+      <div className="flex flex-col justify-center text-center w1/2 md:w-3/12 mx-auto mt-4 p-4 border border-white rounded-xl bg-white">
         <FileUploader
           file={file}
           setFile={setFile}

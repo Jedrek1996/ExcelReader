@@ -9,14 +9,14 @@ const ResultsFilter: React.FC<ResultsPerPageProps> = ({
 }) => {
   return (
     <div className="mt-4">
-      <label htmlFor="limit" className="text-lg mr-2">
+      <label htmlFor="limit" className="mr-2 text-[11px] md:text-lg ">
         Results per page:
       </label>
       <select
         id="limit"
         value={limit}
         onChange={(e) => onLimitChange(parseInt(e.target.value))}
-        className="p-2 text-indigo-500 text-md border border-gray-300 rounded-2xl  focus:outline-none focus:ring-1 focus:ring-green-300"
+        className="p-2 text-indigo-500 border border-gray-300 rounded-2xl text-[11px] md:text-md focus:outline-none focus:ring-1 focus:ring-green-300"
       >
         {[10, 20, 30, 40, 50].map((option) => (
           <option key={option} value={option}>
