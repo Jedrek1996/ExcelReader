@@ -7,7 +7,9 @@
     "server": "nodemon src/server.ts",
     "client": "cd client && npm run dev",
     "dev": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\"",
-    "test": "jest"
+    "test-server": "jest",
+    "test-client": "cd client && npm run test",
+    "test": "concurrently --kill-others-on-fail \"npm run test-server\" \"npm run test-client\""
   },
   "keywords": [],
   "author": "",
