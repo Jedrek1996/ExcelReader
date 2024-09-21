@@ -1,7 +1,6 @@
 # CSV File Uploader and Viewer
 
-https://excel-reader-wqmc.onrender.com/
-
+Live demo of the application [here](https://excel-reader-wqmc.onrender.com/).
 
 ## Problem Statement ❔
 
