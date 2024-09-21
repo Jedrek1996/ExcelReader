@@ -30,6 +30,18 @@ This mini project is a web application that allows users to upload CSV files, vi
 - **Data Listing:** Uploaded data is displayed with page filter and pagination for easy navigation.
 - **Search Functionality:** Users can search through the uploaded data.
 
+## Folder Structure 📂
+
+- **Frontend:** Located in the root directory under `client`. The entry point for the frontend is `index.html`, which is linked to `main.tsx`.
+The structure of the folder includes:
+  - **public:** Contains the favicon and other potential assets.
+  - **src:** Houses the components, tests and entry points for the components (main.tsx).
+  - **build (dist):** Contains the production-ready code.
+
+- **Backend:** Also located in the root directory. The entry point for the server is found in `src/server.ts`. The structure includes:
+  - **controllers, models, routes, tests,** and **utils.**
+
+
 ## Setup and Installation 💿
 ### Prerequisites
 
