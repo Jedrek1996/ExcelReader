@@ -1,4 +1,4 @@
-# CSV File Uploader and Viewer 📄
+# Excel Reader/Viewer 📄
 
 Live demo of the application [here](https://excel-reader-wqmc.onrender.com/).
 
