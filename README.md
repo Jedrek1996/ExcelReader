@@ -1,4 +1,4 @@
-# Excel Reader/Viewer 📄
+# Excel Reader/Viewer 📄 (MVP)
 
 Live demo of the application [here](https://excel-reader-wqmc.onrender.com/).
 
@@ -61,3 +61,8 @@ The structure of the folder includes:
 3. Once the **`dist`** folder is created, rename it to **`build`**.
 4. Update the GitHub repository.
 5. Render will automatically pick up the changes and redeploy.
+
+
+## To Do (Resume on 23 Sept)
+- Refactor Components. (Breakdown, add memo and callback hooks. Redux..?)
+- (Tenative) upgrade app. To add users and save file in Mongodb.
