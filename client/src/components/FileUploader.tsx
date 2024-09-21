@@ -12,16 +12,13 @@ const FileUploader = ({ file, setFile, handleUpload }: FileUploaderProps) => {
     const selectedFile = e.target.files ? e.target.files[0] : null;
 
     if (selectedFile) {
-      if (
-        selectedFile.type !== "text/csv" &&
-        !selectedFile.name.endsWith(".csv")
-      ) {
-        setFile(null);
-        toast.error("Invalid file type. Only CSV file format is accepted.");
-        return;
+      if (selectedFile.type === 'text/csv') {
+        setFile(selectedFile);
+        toast.success('File added! Click Upload CSV to proceed!');
+      } else {
+        toast.error('Invalid file type. Only CSV file format is accepted.');
+        setFile(null); 
       }
-      toast.success("File added! Click Upload CSV to proceed!");
-      setFile(selectedFile);
     }
   };
 
@@ -39,13 +36,18 @@ const FileUploader = ({ file, setFile, handleUpload }: FileUploaderProps) => {
       >
         Choose File
       </label>
-      <span className="ml-2  text-lg text-gray-400">
+      <span className="ml-2 text-lg text-gray-400">
         {file ? file.name : "No file chosen"}
       </span>
 
       <button
         onClick={handleUpload}
-        className="ml-2 p-2 bg-green-400 hover:bg-green-600 rounded"
+        className={`ml-2 p-2 rounded ${
+          file
+            ? "bg-green-400 hover:bg-green-600"
+            : "bg-gray-300 cursor-not-allowed"
+        }`}
+        disabled={!file}
       >
         Upload CSV
       </button>
