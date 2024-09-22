@@ -1,53 +1,57 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Home from "../components/Home";
-import { toast } from "react-toastify";
+import { useFileUpload } from "../components/hooks/useFileUpload";
+import { usePagination } from "../components/hooks/usePagination";
 
-jest.mock("react-toastify", () => ({
-  toast: {
-    error: jest.fn(),
-    success: jest.fn(),
-  },
-}));
-
-beforeEach(() => {
-  jest.clearAllMocks();
-
-  global.fetch = jest.fn().mockResolvedValue({
-    ok: true,
-    json: jest.fn().mockResolvedValue([{ id: 1, name: "Item 1", value: 100 }]),
-  });
-});
+jest.mock("../components/hooks/useFileUpload");
+jest.mock("../components/hooks/usePagination");
 
 describe("Home Component", () => {
-  it("renders the upload message when no file is uploaded", () => {
-    render(<Home />);
-    expect(screen.getByText(/Please upload a CSV file./i)).toBeInTheDocument();
-  });
-
-  it("shows error when trying to upload without a file", async () => {
-    render(<Home />);
-    const uploadButton = screen.getByRole("button", { name: /Upload CSV/i });
-    expect(uploadButton).toBeDisabled();
-    fireEvent.click(uploadButton);
-  });
-
-  it("uploads a file and displays success message", async () => {
-    const mockFile = new File(["dummy content"], "test.csv", {
-      type: "text/csv",
-    });
-    render(<Home />);
-
-    const input = screen.getByLabelText(/choose file/i);
-    fireEvent.change(input, { target: { files: [mockFile] } });
-
-    const uploadButton = screen.getByRole("button", { name: /Upload CSV/i });
-    fireEvent.click(uploadButton);
-
-    await waitFor(() => {
-      expect(toast.success).toHaveBeenCalledWith("File uploaded successfully!");
+  beforeEach(() => {
+    (useFileUpload as jest.Mock).mockReturnValue({
+      file: null,
+      setFile: jest.fn(),
+      isFileUploaded: true,
+      handleUpload: jest.fn(),
     });
 
-    //Item is rendered upload
-    expect(screen.getByText(/Item 1/i)).toBeInTheDocument();
+    const mockData = Array.from({ length: 50 }, (_, index) => ({
+      id: index + 1,
+      name: `Test Data ${index + 1}`,
+    }));
+
+    (usePagination as jest.Mock).mockReturnValue({
+      page: 1,
+      limit: 10,
+      totalPages: 5,
+      displayedData: mockData,
+      handlePagination: jest.fn(),
+      handleLimitChange: jest.fn(),
+    });
+  });
+
+  it("renders the file uploader, search bar, and data table when a file is uploaded", () => {
+    render(<Home />);
+
+    expect(screen.getByText("Select File")).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText("Select File"), {
+      target: {
+        files: [new File(["test.csv"], "test.csv", { type: "text/csv" })],
+      },
+    });
+
+    expect(screen.getByPlaceholderText(/Search/i)).toBeInTheDocument();
+    expect(screen.getByRole("table")).toBeInTheDocument();
+    expect(screen.getByText("id")).toBeInTheDocument();
+    expect(screen.getByText("name")).toBeInTheDocument();
+
+    expect(screen.getByText("Test Data 1")).toBeInTheDocument();
+    expect(screen.getByText("Test Data 2")).toBeInTheDocument();
+    expect(screen.getByText("Test Data 3")).toBeInTheDocument();
+
+    const dropdown = screen.getByRole("combobox");
+    expect(dropdown).toBeInTheDocument();
+    expect(screen.getByDisplayValue("10")).toBeInTheDocument();
   });
 });

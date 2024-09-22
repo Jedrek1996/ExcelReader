@@ -26,7 +26,7 @@ describe("FileUploader Component", () => {
       <FileUploader file={null} setFile={setFile} handleUpload={handleUpload} />
     );
 
-    const fileInput = screen.getByLabelText(/Choose File/i);
+    const fileInput = screen.getByLabelText(/Select File/i);
     fireEvent.change(fileInput, { target: { files: [validFile] } });
 
     await waitFor(() => {
@@ -46,11 +46,10 @@ describe("FileUploader Component", () => {
       <FileUploader file={null} setFile={setFile} handleUpload={handleUpload} />
     );
 
-    const fileInput = screen.getByLabelText(/Choose File/i);
+    const fileInput = screen.getByLabelText(/Select File/i);
     fireEvent.change(fileInput, { target: { files: [invalidFile] } });
 
     await waitFor(() => {
-      // Update this line to check for "No file uploaded"
       expect(screen.getByText(/No file uploaded/i)).toBeInTheDocument();
       expect(toast.error).toHaveBeenCalledWith(
         "Invalid file type. Only CSV file format is accepted."
