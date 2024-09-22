@@ -4,7 +4,9 @@ Live demo of the application [here](https://excel-reader-wqmc.onrender.com/).
 
 ## About❔
 
-This mini project is a web application that allows users to upload CSV files, view the uploaded data with pagination, and search through the data. It features a responsive design and provides feedback on the upload progress.
+This mini project is a web application that allows users to upload CSV files, view the uploaded data with pagination, and search through the data. Please note that this project is intended for local use only. Data is not stored permanently; users can only upload files to view their content.
+
+Additionally, it may take some time to speed up the server hosted on Render's free tier.
 
 ## Technologies Used ⚙️
 
@@ -16,6 +18,7 @@ This mini project is a web application that allows users to upload CSV files, vi
 - **Backend:** 
   - Node.js (with TypeScript)
   - Nodemon for active updates on the backend.
+  - Mutler for file uploads.
 
 - **Testing Framework:** 
   - Jest for unit testing for both ends.
