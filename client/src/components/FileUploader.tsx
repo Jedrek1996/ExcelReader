@@ -34,9 +34,9 @@ const FileUploader = ({ file, setFile, handleUpload }: FileUploaderProps) => {
         htmlFor="file-upload"
         className="px-2 py-1 bg-indigo-500 text-white rounded cursor-pointer hover:bg-indigo-700 transition "
       >
-        Choose File
+        Select File
       </label>
-      <div className="m-5 text-gray-400 ">
+      <div className="p-2 w-1/2 flex items-center justify-center m-5 text-gray-400 border-dotted border-2 border-gray-300 rounded-md mx-auto">
         {file ? file.name : "No file uploaded"}
       </div>
 

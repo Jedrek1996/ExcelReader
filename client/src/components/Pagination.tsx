@@ -17,7 +17,7 @@ const Pagination: React.FC<PaginationProps> = ({
         <>
           <button
             onClick={() => onPageChange(page - 1)}
-            className={`p-1 md:p-2 text-indigo-500 bg-white hover:bg-gray-300 rounded-2xl text-[11px]  md:text-base ${
+            className={`p-1 md:p-2 text-indigo-500 font-semibold bg-white hover:bg-gray-300 rounded-2xl text-[11px]  md:text-base ${
               page <= 1 ? "invisible" : ""
             }`}
           >
@@ -31,7 +31,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
           <button
             onClick={() => onPageChange(page + 1)}
-            className={`p-1 md:p-2 text-indigo-500 bg-white hover:bg-gray-300 rounded-2xl text-[11px] md:text-base ${
+            className={`p-1 md:p-2 text-indigo-500 font-semibold bg-white hover:bg-gray-300 rounded-2xl text-[11px] md:text-base ${
               page >= totalPages ? "invisible" : ""
             }`}
           >
