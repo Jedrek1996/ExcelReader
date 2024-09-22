@@ -2,7 +2,7 @@
 
 Live demo of the application [here](https://excel-reader-wqmc.onrender.com/).
 
-## Problem Statement ❔
+## About❔
 
 This mini project is a web application that allows users to upload CSV files, view the uploaded data with pagination, and search through the data. It features a responsive design and provides feedback on the upload progress.
 
@@ -64,5 +64,4 @@ The structure of the folder includes:
 
 
 ## To Do (Resume on 23 Sept)
-- Refactor Components. (Breakdown, add memo and callback hooks. Redux..?)
-- (Tenative) upgrade app. To add users and save file in Mongodb.
+- (Tenative) upgrade app. To add users (Clerk) and relevant CRUD Operations with Mongodb.
