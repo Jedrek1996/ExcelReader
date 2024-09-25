@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useFileUpload } from "../components/hooks/useFileUpload";
+import useFileUpload from "./hooks/useFileUpload";
 import { usePagination } from "../components/hooks/usePagination";
 import FileUploader from "./FileUploader";
 import Pagination from "./Pagination";

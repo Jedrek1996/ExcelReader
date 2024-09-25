@@ -3,6 +3,10 @@ interface DataTableProps {
 }
 
 const DataTable: React.FC<DataTableProps> = ({ data }) => {
+  if (data.length === 0) {
+    return <div className="text-center py-4">No data available.</div>;
+  }
+
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-slate-500 text-white border shadow-md">

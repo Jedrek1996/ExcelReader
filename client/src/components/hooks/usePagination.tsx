@@ -7,7 +7,7 @@ export const usePagination = (
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(initialLimit);
   const [totalPages, setTotalPages] = useState(0);
-  
+
   useEffect(() => {
     setTotalPages(Math.ceil(parsedData.length / limit));
   }, [parsedData, limit]);
@@ -24,7 +24,9 @@ export const usePagination = (
 
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
-  const displayedData = parsedData.slice(startIndex, endIndex);
+  const displayedData = Array.isArray(parsedData)
+    ? parsedData.slice(startIndex, endIndex)
+    : [];
 
   return {
     page,
