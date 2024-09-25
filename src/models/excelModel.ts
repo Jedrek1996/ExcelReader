@@ -1,22 +1,16 @@
+import mongoose, { Schema, Document } from "mongoose";
 export interface CSVRow {
   [key: string]: string;
 }
 
-let csvData: CSVRow[] = [];
+export interface CSVData extends Document {
+  data: CSVRow[];
+  fileName: string;
+}
 
-export const saveData = (data: CSVRow[]) => {
-  csvData = data;
-};
+const csvSchema: Schema = new Schema({
+  data: [{ type: Object, required: true }],
+  fileName: { type: String, required: true },
+});
 
-export const getData = (data: CSVRow[], page: number, limit: number): CSVRow[] => {
-  const startIndex = (page - 1) * limit;
-  return data.slice(startIndex, startIndex + limit);
-};
-
-export const searchData = (query: string): CSVRow[] => {
-  return csvData.filter((row) =>
-    Object.values(row).some((value) =>
-      value.toLowerCase().includes(query.toLowerCase())
-    )
-  );
-};
+export const CSVModel = mongoose.model<CSVData>("CSVData", csvSchema);

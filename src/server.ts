@@ -5,6 +5,8 @@ dotenv.config();
 //Express ✨
 import express from "express";
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //Routes ✨
 import excelRoute from "./routes/excelRoute";
@@ -25,9 +27,9 @@ app.use(cors());
 
 //Mongodb connection ✨
 const port = process.env.PORT || 5100;
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 try {
-  // mongoose.connect(process.env.MONGO_URL as string);
+  mongoose.connect(process.env.MONGO_URL as string);
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
