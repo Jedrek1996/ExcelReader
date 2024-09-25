@@ -1,4 +1,4 @@
-# Excel Reader/Viewer 📄 (MVP)
+# CSV Reader/Viewer 📄 (MVP)
 
 Live demo of the application [here](https://excel-reader-wqmc.onrender.com/).
 
@@ -66,5 +66,5 @@ The structure of the folder includes:
 5. Render will automatically pick up the changes and redeploy.
 
 
-## To Do (Resume on 23 Sept)
-- (Tenative) upgrade app. To add users (Clerk) and relevant CRUD Operations with Mongodb.
+## To Do (In progress)
+- (Tenative) upgrade app. To add users and relevant CRUD Operations with Mongodb.
