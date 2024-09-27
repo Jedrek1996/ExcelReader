@@ -1,6 +1,11 @@
 # CSV Reader/Viewer 📄 (MVP)
 
 Live demo of the application [here](https://excel-reader-wqmc.onrender.com/).
+To test out the older version with working test cases please download [(V1.0.0)](https://github.com/Jedrek1996/ExcelReader/releases/tag/v1.0.0) and startup the application with the steps below.
+
+## To Do (In progress)
+-  To add users and relevant CRUD Operations with Mongodb. (V1.0.0 runs locally.)
+-  Update test cases, most test cases fails as of now. Will update once the application is stable.
 
 ## About❔
 
@@ -64,7 +69,3 @@ The structure of the folder includes:
 3. Once the **`dist`** folder is created, rename it to **`build`**.
 4. Update the GitHub repository.
 5. Render will automatically pick up the changes and redeploy.
-
-
-## To Do (In progress)
-- (Tenative) upgrade app. To add users and relevant CRUD Operations with Mongodb.
