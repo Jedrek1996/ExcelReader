@@ -9,7 +9,7 @@ const DataTable: React.FC<DataTableProps> = ({ data }) => {
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full bg-slate-500 text-white border shadow-md">
+      <table className="min-w-full bg-secondary text-white border shadow-md">
         <thead>
           <tr className="bg-gray-400 text-white">
             {Object.keys(data[0]).map((key) => (
@@ -21,7 +21,7 @@ const DataTable: React.FC<DataTableProps> = ({ data }) => {
         </thead>
         <tbody>
           {data.map((row, index) => (
-            <tr key={index} className="hover:bg-slate-600">
+            <tr key={index} className="hover:bg-neutral-300">
               {Object.values(row).map((value, i) => (
                 <td key={i} className="border-2 px-4 py-2">
                   {value}

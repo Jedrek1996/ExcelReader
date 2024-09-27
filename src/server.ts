@@ -10,7 +10,11 @@ app.use(express.urlencoded({ extended: true }));
 
 //Routes ✨
 import excelRoute from "./routes/excelRoute";
-app.use("/api", excelRoute);
+import userRoute from "./routes/userRoute";
+import { authenticateUser } from "./middleware/authMiddleware";
+
+app.use("/api/excel", excelRoute);
+app.use("/api/users", userRoute);
 
 // Serve static files from React build ✨
 import path from "path";

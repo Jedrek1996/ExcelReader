@@ -23,34 +23,42 @@ const FileUploader = ({ file, setFile, handleUpload }: FileUploaderProps) => {
   };
 
   return (
-    <div>
-      <input
-        type="file"
-        id="file-upload"
-        onChange={handleFileChange}
-        className="hidden"
-      />
-      <label
-        htmlFor="file-upload"
-        className="px-2 py-1 bg-indigo-500 text-white rounded cursor-pointer hover:bg-indigo-700 transition "
-      >
-        Select File
-      </label>
-      <div className="p-2 w-1/2 flex items-center justify-center m-5 text-gray-400 border-dotted border-2 border-gray-300 rounded-md mx-auto">
-        {file ? file.name : "No file uploaded"}
-      </div>
+    <div className="flex flex-col items-center text-center">
+      <div className="rounded-lg w-fit bg-white">
+        <h2 className="text-xl text-neutral-400 mb-4 font-semibold">
+          Upload Your CSV
+        </h2>
 
-      <button
-        onClick={handleUpload}
-        className={`ml-2 px-2 py-1 rounded  ${
-          file
-            ? "bg-green-400 hover:bg-green-600"
-            : "bg-gray-300 cursor-not-allowed"
-        }`}
-        disabled={!file}
-      >
-        Upload CSV
-      </button>
+        <input
+          type="file"
+          id="file-upload"
+          onChange={handleFileChange}
+          className="hidden"
+        />
+
+        <label
+          htmlFor="file-upload"
+          className="block mb-4 px-4 py-2 bg-primary font-semibold text-white rounded-lg cursor-pointer hover:bg-red-400 transition duration-200 text-center"
+        >
+          Select File
+        </label>
+
+        <div className="w-full p-2 mb-4 text-center text-gray-400 border-dotted border-2 border-gray-300 rounded-md">
+          {file ? file.name : "No file uploaded"}
+        </div>
+
+        <button
+          onClick={handleUpload}
+          className={`w-full px-4 py-2 rounded-lg  text-white font-semibold transition duration-200 ${
+            file
+              ? "bg-secondary hover:bg-green-400"
+              : "bg-gray-300 cursor-not-allowed"
+          }`}
+          disabled={!file}
+        >
+          Upload CSV
+        </button>
+      </div>
     </div>
   );
 };

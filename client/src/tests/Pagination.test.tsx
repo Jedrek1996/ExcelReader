@@ -14,7 +14,6 @@ describe("Pagination", () => {
       />
     );
 
-    // Use a regex to match the text that is split
     expect(screen.getByText(/Page/)).toBeInTheDocument();
     expect(screen.getByText(/1/)).toBeInTheDocument();
     expect(screen.getByText(/of/)).toBeInTheDocument();

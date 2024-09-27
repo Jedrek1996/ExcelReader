@@ -18,9 +18,12 @@ export default {
   },
   variants: {
     extend: {
-      fontWeight: ["hover", "focus"], // Add any variants you need
+      fontWeight: ["hover", "focus"],
       fontStyle: ["hover", "focus"],
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["retro"],
+  },
 };

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CSVRow } from "../models/excelModel";
+import { CSVRow, searchData } from "../models/excelModel";
 import { parseCSV } from "../utils/fileParser";
 import { CSVModel } from "../models/excelModel";
 
@@ -65,4 +65,20 @@ export const searchDataInDB = async (query: string) => {
   });
 
   return results;
+};
+
+let parsedData: Record<string, any>[] = []; // This should be populated after CSV upload
+
+export const searchLocalFile = (req: Request, res: Response) => {
+  const query = req.query.query as string;
+  console.log("Received query:", query); // Log received query
+
+  if (!query) {
+    return res.status(400).json({ error: "No search query provided" });
+  }
+
+  const results = searchData(parsedData, query); // Filter using parsedData
+  console.log("Search results:", results); // Log results
+
+  return res.status(200).json(results);
 };

@@ -14,3 +14,14 @@ const csvSchema: Schema = new Schema({
 });
 
 export const CSVModel = mongoose.model<CSVData>("CSVData", csvSchema);
+
+export const searchData = (
+  csvData: Record<string, any>[],
+  query: string
+): Record<string, any>[] => {
+  return csvData.filter((row) =>
+    Object.values(row).some((value) =>
+      value.toString().toLowerCase().includes(query.toLowerCase())
+    )
+  );
+};
