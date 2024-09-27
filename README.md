@@ -1,17 +1,21 @@
 # CSV Reader/Viewer 📄 (MVP)
 
 Live demo of the application [here](https://excel-reader-wqmc.onrender.com/signin).
+
+Additionally, it may take some time to speed up the server hosted on Render's free tier. 
+
 To test out the older version with working test cases please download [(V1.0.0)](https://github.com/Jedrek1996/ExcelReader/releases/tag/v1.0.0) and startup the application with the steps below.
 
+
+
 ## To Do (In progress)
+
 -  Update auth routes and add relevant CRUD Operations for the files associated with each user with Mongodb. (V1.0.0 runs locally.)
 -  Update test cases, most test cases fails as of now. Will update once the application is stable.
 
 ## About❔
 
 This mini project is a web application that allows users to upload CSV files, view the uploaded data with pagination, and search through the data. Please note that this project is intended for local use only. Data is not stored permanently; users can only upload files to view their content.
-
-Additionally, it may take some time to speed up the server hosted on Render's free tier.
 
 ## Technologies Used ⚙️
 
