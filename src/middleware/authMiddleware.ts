@@ -6,7 +6,9 @@ export const authenticateUser = (
   res: Response,
   next: Function
 ) => {
-  const token = req.cookies?.token;
+  const token = req.cookies?.csvReaderToken;
+  console.log(token);
+
   if (!token) {
     return res.status(401).json({ error: "Token Authentication Invalid" });
   }
@@ -19,3 +21,5 @@ export const authenticateUser = (
     return res.status(401).json({ error: "JWT Authentication Invalid" });
   }
 };
+
+//Need to get the cookie from the frontend and passed it to the backend..

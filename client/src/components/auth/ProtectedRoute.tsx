@@ -10,13 +10,9 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   component: Component,
   ...rest
 }) => {
-  const isAuthenticated = !!localStorage.getItem("token");
+  const isAuthenticated = !!localStorage.getItem("csvReaderToken");
 
-  return isAuthenticated ? (
-    <Component {...rest} />
-  ) : (
-    <Navigate to="/signin" />
-  );
+  return isAuthenticated ? <Component {...rest} /> : <Navigate to="/signin" />;
 };
 
 export default ProtectedRoute;

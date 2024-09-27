@@ -4,16 +4,19 @@ dotenv.config();
 
 //Express ✨
 import express from "express";
+import cookieParser from "cookie-parser";
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 //Routes ✨
 import excelRoute from "./routes/excelRoute";
 import userRoute from "./routes/userRoute";
 import { authenticateUser } from "./middleware/authMiddleware";
 
-app.use("/api/excel", excelRoute);
+app.get("/", authenticateUser);
+app.use("/api/excel", authenticateUser, excelRoute);
 app.use("/api/users", userRoute);
 
 // Serve static files from React build ✨

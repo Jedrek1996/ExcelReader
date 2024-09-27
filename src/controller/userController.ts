@@ -27,10 +27,11 @@ export const loginUser = async (req: Request, res: Response) => {
     const token = createJWT({ userId: user._id });
     const oneDay = 1000 * 60 * 60 * 24;
 
-    res.cookie("token", token, {
+    res.cookie("csvReaderToken", token, {
       httpOnly: true,
       expires: new Date(Date.now() + oneDay),
       secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
     });
 
     return res
@@ -42,11 +43,14 @@ export const loginUser = async (req: Request, res: Response) => {
 };
 
 export const logoutUser = async (req: Request, res: Response) => {
-  res.cookie("token", "logout", {
+  res.clearCookie("csvReaderToken", {
     httpOnly: true,
-    expires: new Date(Date.now()),
+    sameSite: "strict",
+    secure: process.env.NODE_ENV === "production",
+    path: "/", // Ensure you set the same path
   });
-  return res.status(200).json({ message: "User logout!" });
+
+  return res.status(200).json({ message: "User logged out!" });
 };
 
 export const getUser = async (req: Request, res: Response) => {
@@ -67,5 +71,3 @@ export const getUser = async (req: Request, res: Response) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
-

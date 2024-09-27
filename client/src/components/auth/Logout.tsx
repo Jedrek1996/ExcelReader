@@ -1,17 +1,21 @@
-import React from "react";
+import { useEffect } from "react";
+import { useUserContext } from "../../provider/UserContext";
 
 const Logout: React.FC = () => {
+  const { user, setUser, setUserCookie, userCookie } = useUserContext();
   const handleLogout = async () => {
     try {
       const response = await fetch("/api/users/logout", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        credentials: "include",
       });
 
       if (response.ok) {
-        window.location.href = "/signin";
+        // Clear the localStorage and context state
+        localStorage.removeItem("csvReaderToken");
+        setUser(null);
+        setUserCookie(null);
+        window.location.href = "/signin"; // Redirect after logout
       } else {
         const errorData = await response.json();
         console.error("Logout failed:", errorData);
@@ -20,6 +24,11 @@ const Logout: React.FC = () => {
       console.error("Error logging out:", error);
     }
   };
+
+  useEffect(() => {
+    console.log("User:", user);
+    console.log("User Cookie:", userCookie);
+  }, [user, userCookie]);
 
   return (
     <button

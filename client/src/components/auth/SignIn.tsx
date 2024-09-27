@@ -1,5 +1,6 @@
-import React, { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../../provider/UserContext";
 
 interface LoginResponse {
   token: string;
@@ -10,11 +11,18 @@ const SignIn: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const { user, setUser, userCookie, setUserCookie } = useUserContext();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user && userCookie) {
+      console.log(`Username: ${user} 📜 Cookie: ${userCookie}`);
+    }
+  }, [user, userCookie]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
+    console.log("click submit");
     const formData = JSON.stringify({ username, password });
 
     try {
@@ -28,7 +36,11 @@ const SignIn: React.FC = () => {
 
       if (response.ok) {
         const data: LoginResponse = await response.json();
-        localStorage.setItem("token", data.token);
+        const cookie = data.token;
+
+        localStorage.setItem("csvReaderToken", cookie);
+        setUserCookie(cookie);
+        setUser(username);
         window.location.href = "/";
       } else {
         const errorData = await response.json();
