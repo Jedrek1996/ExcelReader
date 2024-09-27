@@ -12,14 +12,14 @@ import Drawer from "./Drawer";
 
 function Home() {
   const [parsedData, setParsedData] = useState<Record<string, any>[]>([]);
-  const [originalData, setOriginalData] = useState<Record<string, any>[]>([]); 
+  const [originalData, setOriginalData] = useState<Record<string, any>[]>([]);
   const [searchPerformed, setSearchPerformed] = useState(false);
 
   const { file, setFile, isFileUploaded, handleUpload } = useFileUpload(
     10,
     (data) => {
       setParsedData(data);
-      setOriginalData(data); 
+      setOriginalData(data);
     },
     (total) => pagination.setTotalPages(total),
     setSearchPerformed
@@ -44,7 +44,7 @@ function Home() {
               setParsedData={setParsedData}
               setSearchPerformed={setSearchPerformed}
               parsedData={parsedData}
-              originalData={originalData} 
+              originalData={originalData}
             />
           )}
         </div>

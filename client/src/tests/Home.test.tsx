@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import Home from "../components/Home";
-import { useFileUpload } from "../components/hooks/useFileUpload";
+import useFileUpload from "../components/hooks/useFileUpload";
 import { usePagination } from "../components/hooks/usePagination";
 
 jest.mock("../components/hooks/useFileUpload");

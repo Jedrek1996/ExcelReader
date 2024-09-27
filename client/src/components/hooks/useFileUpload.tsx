@@ -15,15 +15,15 @@ function useFileUpload(
       toast.error("Please select a CSV file before uploading.");
       return;
     }
-  
+
     try {
       const data = await parseFile(file);
-      console.log("Parsed data:", data); 
+      console.log("Parsed data:", data);
       setParsedData(data);
       setTotalPages(Math.ceil(data.length / limit));
 
       const savedData = await saveDataToMongo(file);
-      setParsedData(savedData.data); 
+      setParsedData(savedData.data);
       setIsFileUploaded(true);
       setSearchPerformed(false);
       toast.success("File uploaded successfully!");
@@ -32,7 +32,6 @@ function useFileUpload(
       toast.error("An error occurred while uploading the file.");
     }
   };
-  
 
   return { file, setFile, isFileUploaded, handleUpload };
 }
