@@ -6,11 +6,13 @@ export interface CSVRow {
 export interface CSVData extends Document {
   data: CSVRow[];
   fileName: string;
+  userName: string;
 }
 
 const csvSchema: Schema = new Schema({
   data: [{ type: Object, required: true }],
   fileName: { type: String, required: true },
+  userName: { type: String, required: true },
 });
 
 export const CSVModel = mongoose.model<CSVData>("CSVData", csvSchema);

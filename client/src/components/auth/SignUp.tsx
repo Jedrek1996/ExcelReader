@@ -1,5 +1,6 @@
 import React, { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+
 interface RegisterResponse {
   message: string;
 }
@@ -10,8 +11,27 @@ const SignUp: React.FC = () => {
   const [error, setError] = useState<string>("");
   const navigate = useNavigate();
 
+  const validateUsername = () => {
+    if (username.length < 4 || username.length > 20) {
+      setError("Username must be between 4 and 20 characters.");
+      return false;
+    }
+    return true;
+  };
+
+  const validatePassword = () => {
+    if (password.length <= 8) {
+      setError("Password must be more than 8 characters.");
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!validateUsername() || !validatePassword()) {
+      return;
+    }
 
     const formData = JSON.stringify({ username, password });
 
@@ -27,7 +47,7 @@ const SignUp: React.FC = () => {
       if (response.ok) {
         const data: RegisterResponse = await response.json();
         alert(data.message);
-        window.location.href = "/signin";
+        navigate("/signin");
       } else {
         const errorData = await response.json();
         setError(errorData.error || "Sign Up failed. Please try again.");

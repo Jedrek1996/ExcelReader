@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useUserContext } from "../../provider/UserContext";
 
 function useFileUpload(
   limit: number,
   setParsedData: (data: Record<string, any>[]) => void,
   setTotalPages: (total: number) => void,
-  setSearchPerformed: (value: boolean) => void
 ) {
   const [file, setFile] = useState<File | null>(null);
-  const [isFileUploaded, setIsFileUploaded] = useState(false);
+  const { user, setTableData } = useUserContext();
 
   const handleUpload = async () => {
     if (!file) {
@@ -16,16 +16,19 @@ function useFileUpload(
       return;
     }
 
+    if (!user) {
+      toast.error("User not available. Please log in.");
+      return;
+    }
+
     try {
       const data = await parseFile(file);
       console.log("Parsed data:", data);
-      setParsedData(data);
+      setTableData(data);
       setTotalPages(Math.ceil(data.length / limit));
 
-      const savedData = await saveDataToMongo(file);
-      setParsedData(savedData.data);
-      setIsFileUploaded(true);
-      setSearchPerformed(false);
+      const savedData = await saveDataToMongo(file, user);
+      setParsedData(savedData.data);;
       toast.success("File uploaded successfully!");
     } catch (error) {
       console.error("Error during file upload or parsing:", error);
@@ -33,11 +36,13 @@ function useFileUpload(
     }
   };
 
-  return { file, setFile, isFileUploaded, handleUpload };
+  return { file, setFile, handleUpload };
 }
-async function saveDataToMongo(file: File) {
+
+async function saveDataToMongo(file: File, user: string) {
   const formData = new FormData();
   formData.append("file", file);
+  formData.append("username", user);
 
   const response = await fetch("/api/excel/upload", {
     method: "POST",
@@ -48,7 +53,6 @@ async function saveDataToMongo(file: File) {
   if (!response.ok) {
     throw new Error("Failed to save data");
   }
-
   return await response.json();
 }
 

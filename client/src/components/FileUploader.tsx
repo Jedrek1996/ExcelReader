@@ -49,7 +49,7 @@ const FileUploader = ({ file, setFile, handleUpload }: FileUploaderProps) => {
 
         <button
           onClick={handleUpload}
-          className={`w-full px-4 py-2 rounded-lg  text-white font-semibold transition duration-200 ${
+          className={`w-full px-4 py-2 rounded-lg text-white font-semibold transition duration-200 ${
             file
               ? "bg-secondary hover:bg-green-400"
               : "bg-gray-300 cursor-not-allowed"

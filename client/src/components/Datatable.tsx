@@ -3,7 +3,7 @@ interface DataTableProps {
 }
 
 const DataTable: React.FC<DataTableProps> = ({ data }) => {
-  if (data.length === 0) {
+  if (!data || data.length === 0) {
     return <div className="text-center py-4">No data available.</div>;
   }
 
@@ -24,7 +24,7 @@ const DataTable: React.FC<DataTableProps> = ({ data }) => {
             <tr key={index} className="hover:bg-neutral-300">
               {Object.values(row).map((value, i) => (
                 <td key={i} className="border-2 px-4 py-2">
-                  {value}
+                  {typeof value === "string" ? value : JSON.stringify(value)}
                 </td>
               ))}
             </tr>

@@ -28,7 +28,14 @@ export const loginUser = async (req: Request, res: Response) => {
     const oneDay = 1000 * 60 * 60 * 24;
 
     res.cookie("csvReaderToken", token, {
-      httpOnly: true,
+      // httpOnly: true,
+      expires: new Date(Date.now() + oneDay),
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+
+    res.cookie("csvReaderUser", username, {
+      // httpOnly: true,
       expires: new Date(Date.now() + oneDay),
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
@@ -44,10 +51,17 @@ export const loginUser = async (req: Request, res: Response) => {
 
 export const logoutUser = async (req: Request, res: Response) => {
   res.clearCookie("csvReaderToken", {
+    // httpOnly: true,
+    sameSite: "strict",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+  });
+
+  res.clearCookie("csvReaderUser", {
     httpOnly: true,
     sameSite: "strict",
     secure: process.env.NODE_ENV === "production",
-    path: "/", // Ensure you set the same path
+    path: "/",
   });
 
   return res.status(200).json({ message: "User logged out!" });
@@ -69,5 +83,22 @@ export const getUser = async (req: Request, res: Response) => {
   } catch (error) {
     console.error("Error fetching user:", error);
     return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const validateUser = async (req: Request, res: Response) => {
+  const username = req.params.user;
+  console.log("Validating user:", username);
+
+  try {
+    const user = await User.findOne({ username });
+    if (!user) {
+      return false;
+    }
+    console.log("User found");
+    return true;
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    return false;
   }
 };

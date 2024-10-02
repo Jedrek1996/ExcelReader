@@ -11,13 +11,14 @@ function App() {
   return (
     <UserProvider>
       <Router>
+        <ToastContainer />
         <Routes>
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/" element={<ProtectedRoute component={Home} />} />
+          <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
       </Router>
-      <ToastContainer />
     </UserProvider>
   );
 }

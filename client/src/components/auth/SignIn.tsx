@@ -16,13 +16,12 @@ const SignIn: React.FC = () => {
 
   useEffect(() => {
     if (user && userCookie) {
-      console.log(`Username: ${user} 📜 Cookie: ${userCookie}`);
+      // console.log(`Username: ${user} 📜 Cookie: ${userCookie}`);
     }
   }, [user, userCookie]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("click submit");
     const formData = JSON.stringify({ username, password });
 
     try {
@@ -38,10 +37,11 @@ const SignIn: React.FC = () => {
         const data: LoginResponse = await response.json();
         const cookie = data.token;
 
-        localStorage.setItem("csvReaderToken", cookie);
         setUserCookie(cookie);
         setUser(username);
-        window.location.href = "/";
+        localStorage.setItem("csvReaderToken", cookie);
+        localStorage.setItem("csvReaderUser", username);
+        navigate("/");
       } else {
         const errorData = await response.json();
         setError(errorData.error || "Login failed. Please try again.");
