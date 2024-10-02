@@ -23,17 +23,12 @@ describe("Searchbar", () => {
   it("calls search when the Search button is clicked", async () => {
     const setParsedData = jest.fn();
     const setSearchPerformed = jest.fn();
-    
-    // Explicitly define the types for parsedData and originalData
-    const parsedData: Record<string, any>[] = []; // Define as needed for your tests
-    const originalData: Record<string, any>[] = []; // Explicitly define as an array of objects
+
+    const originalData: Record<string, any>[] = []; 
 
     render(
       <Searchbar 
-        setParsedData={setParsedData} 
-        setSearchPerformed={setSearchPerformed} 
-        parsedData={parsedData} // Add parsedData prop
-        originalData={originalData} // Add originalData prop
+        originalData={originalData} 
       />
     );
 
@@ -44,7 +39,7 @@ describe("Searchbar", () => {
     fireEvent.click(searchButton);
 
     await waitFor(() => {
-      expect(setParsedData).toHaveBeenCalledWith(originalData); // Update expected value based on your logic
+      expect(setParsedData).toHaveBeenCalledWith(originalData); 
       expect(setSearchPerformed).toHaveBeenCalledWith(true);
     });
   });
