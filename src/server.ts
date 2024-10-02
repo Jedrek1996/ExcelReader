@@ -4,6 +4,7 @@ dotenv.config();
 
 //Express ✨
 import express from "express";
+
 import cookieParser from "cookie-parser";
 const app = express();
 app.use(express.json());
@@ -24,7 +25,7 @@ import path from "path";
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 // Handle routes by sending to build index ✨
-app.get("*", (req, res) => {
+app.get("*", (req: Request, res: Response) => {
   res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
@@ -35,6 +36,8 @@ app.use(cors());
 //Mongodb connection ✨
 const port = process.env.PORT || 5100;
 import mongoose from "mongoose";
+import { Request } from "express";
+import { Response } from "express";
 try {
   mongoose.connect(process.env.MONGO_URL as string);
   app.listen(port, () => {
