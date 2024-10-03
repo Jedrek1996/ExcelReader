@@ -10,9 +10,6 @@ export const authenticateUser = (
   console.log(token);
 
   if (!token) {
-    console.log(
-      res.status(401).json({ error: "Token Authentication Invalid" })
-    );
     return res.redirect("/signin");
   }
 
