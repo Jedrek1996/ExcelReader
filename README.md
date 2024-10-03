@@ -1,6 +1,6 @@
 # CSV Reader/Viewer 📄 (MVP)
 
-Live demo of the application [here](https://excel-reader-wqmc.onrender.com/).
+Live demo of the application [here](https://excel-reader-wqmc.onrender.com/signin).
 To test out the older version with working test cases please download [(V1.0.0)](https://github.com/Jedrek1996/ExcelReader/releases/tag/v1.0.0) and startup the application with the steps below.
 
 ## To Do (In progress)
