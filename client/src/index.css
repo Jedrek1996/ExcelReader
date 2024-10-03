@@ -5,3 +5,22 @@
 body {
   @apply font-pt-sans;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+/* For Firefox */
+.scrollbar-hidden {
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}

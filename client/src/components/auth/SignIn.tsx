@@ -54,10 +54,6 @@ const SignIn: React.FC = () => {
   return (
     <div className="flex flex-col justify-center items-center h-screen text-center bg-gray-100">
       <h2 className="text-primary text-5xl mb-4 font-bold">CSV Reader 📜</h2>
-      <div className="text-secondary text-1xl mb-3 font-bold">
-        (Work in Progress) - Adding CRUD operations for uploaded files that are
-        linked to users
-      </div>
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
         <h2 className="text-3xl text-neutral-500 mb-6 font-semibold">
           Sign In

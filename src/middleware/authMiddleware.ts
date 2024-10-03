@@ -10,9 +10,11 @@ export const authenticateUser = (
   console.log(token);
 
   if (!token) {
-    return res.status(401).json({ error: "Token Authentication Invalid" });
+    console.log(
+      res.status(401).json({ error: "Token Authentication Invalid" })
+    );
+    return res.redirect("/signin");
   }
-  console.log(token);
 
   try {
     verifyJWT(token);
@@ -22,4 +24,3 @@ export const authenticateUser = (
   }
 };
 
-//Need to get the cookie from the frontend and passed it to the backend..

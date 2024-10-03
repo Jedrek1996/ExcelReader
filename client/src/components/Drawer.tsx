@@ -63,6 +63,8 @@ const Drawer: React.FC = () => {
       if (!response.ok) {
         throw new Error("Failed to delete the file");
       }
+
+      setUserData((prevData) => prevData.filter((file) => file._id !== fileId));
       fetchUserData();
       toast.success("File deleted successfully!");
     } catch (error) {
@@ -75,6 +77,7 @@ const Drawer: React.FC = () => {
     setFilteredData([]);
     setCurrentData(file.data);
     setTableData(file.data);
+    toast.success(`Displaying ${file.fileName}`);
   };
 
   const handleDrawerToggle = () => {
@@ -122,7 +125,7 @@ const Drawer: React.FC = () => {
                   <a className="flex-grow">{file.fileName}</a>
                   <div className="flex">
                     <button
-                      className="bg-green-400 p-1 rounded-md text-white mr-1 hover:bg-green-700"
+                      className="bg-green-300 p-1 rounded-md text-white mr-1 hover:bg-green-700"
                       onClick={() => handleFileClick(file)}
                     >
                       Display
@@ -131,14 +134,16 @@ const Drawer: React.FC = () => {
                       className="bg-red-400 p-1 rounded-md text-white hover:bg-red-600"
                       onClick={() => handleDeleteFile(file._id)}
                     >
-                      Remove
+                      Delete
                     </button>
                   </div>
                 </div>
               </div>
             ))
           ) : (
-            <span>No files found.</span>
+            <div className="flex justify-center items-center text-center text-xl text-red-400 font-semibold">
+              No files found. Please upload a csv file.
+            </div>
           )}
           <li className="mt-auto">
             <Logout />
