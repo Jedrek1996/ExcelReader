@@ -30,15 +30,15 @@ export const loginUser = async (req: Request, res: Response) => {
     res.cookie("csvReaderToken", token, {
       // httpOnly: true,
       expires: new Date(Date.now() + oneDay),
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: true,
+      sameSite: "none",
     });
 
     res.cookie("csvReaderUser", username, {
       // httpOnly: true,
       expires: new Date(Date.now() + oneDay),
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: true,
+      sameSite: "none",
     });
 
     return res
@@ -53,14 +53,14 @@ export const logoutUser = async (req: Request, res: Response) => {
   res.clearCookie("csvReaderToken", {
     // httpOnly: true,
     sameSite: "strict",
-    secure: process.env.NODE_ENV === "production",
+    secure: true,
     path: "/",
   });
 
   res.clearCookie("csvReaderUser", {
     httpOnly: true,
     sameSite: "strict",
-    secure: process.env.NODE_ENV === "production",
+    secure: true,
     path: "/",
   });
 
